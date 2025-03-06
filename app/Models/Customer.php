@@ -11,6 +11,7 @@ class Customer extends Model
     use HasFactory;
 
     protected $fillable=[
+<<<<<<< HEAD
         'name',
         'type',
         'mail',
@@ -19,6 +20,10 @@ class Customer extends Model
         'state',
         'postal_code'
         ];
+=======
+
+    ];
+>>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
 
     /**
      * Get all of the comments for the Customer

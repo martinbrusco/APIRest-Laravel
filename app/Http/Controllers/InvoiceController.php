@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Invoice;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreInvoiceRequest;
+<<<<<<< HEAD
 use App\Http\Requests\BulkStoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
 use App\Http\Resources\InvoiceCollection;
@@ -12,11 +13,16 @@ use Illuminate\Http\Request;
 use App\Filters\InvoiceFilter;
 
 
+=======
+use App\Http\Requests\UpdateInvoiceRequest;
+use App\Http\Resources\InvoiceCollection;
+>>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
 class InvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+<<<<<<< HEAD
     public function index(Request $request)
     {
         $filter= new InvoiceFilter();
@@ -30,6 +36,12 @@ class InvoiceController extends Controller
         
         return new InvoiceCollection($query->paginate()->appends($request->query()));
 
+=======
+    public function index()
+    {
+        $invoices= Invoice::paginate();
+        return new InvoiceCollection($invoices);
+>>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
     }
 
     /**
@@ -40,6 +52,7 @@ class InvoiceController extends Controller
         //
     }
 
+<<<<<<< HEAD
     public function bulkStore(BulkStoreInvoiceRequest $request ){
 
 
@@ -49,6 +62,8 @@ class InvoiceController extends Controller
 
 
 
+=======
+>>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
     /**
      * Store a newly created resource in storage.
      */

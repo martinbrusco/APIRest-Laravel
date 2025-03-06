@@ -8,7 +8,10 @@ use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Http\Resources\CustomerCollection;
 use App\Filters\CustomerFilter;
+<<<<<<< HEAD
 use App\Http\Resources\CustomerResource;
+=======
+>>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
 use Illuminate\Http\Request;
 
 
@@ -48,7 +51,10 @@ class CustomerController extends Controller
     public function store(StoreCustomerRequest $request)
     {
         //
+<<<<<<< HEAD
         return new CustomerResource(Customer::create($request->all()));
+=======
+>>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
     }
 
     /**
@@ -56,12 +62,16 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
+<<<<<<< HEAD
         $includeInvoices= request()->query('includeInvoice');
         if ($includeInvoices){
             return new CustomerResource($customer->loadMissing('invoices'));
         }
 
         return new CustomerResource($customer);
+=======
+        //
+>>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
     }
 
     /**
@@ -78,7 +88,10 @@ class CustomerController extends Controller
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
         //
+<<<<<<< HEAD
         $customer->update($request->all());
+=======
+>>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
     }
 
     /**
