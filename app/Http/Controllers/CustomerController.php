@@ -8,14 +8,8 @@ use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Http\Resources\CustomerCollection;
 use App\Filters\CustomerFilter;
-<<<<<<< HEAD
 use App\Http\Resources\CustomerResource;
-=======
->>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
 use Illuminate\Http\Request;
-
-
-
 
 class CustomerController extends Controller
 {
@@ -24,17 +18,21 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
+        $filter = new CustomerFilter();
+        $queryItems = $filter->transform($request);
+        $includeInvoices = $request->query('includeInvoices');
 
-        $filter= new CustomerFilter();
-        $queryItems= $filter->transform($request);
-        $includeInvoices= $request->query('includeInvoices');
-        $customer= Customer::where($queryItems);
+        $customerQuery = Customer::query();
+
+        if (!empty($queryItems)) {
+            $customerQuery->where($queryItems);
+        }
 
         if ($includeInvoices) {
-             $customer = $customer->with('invoices');
+            $customerQuery->with('invoices');
         }
-        return new CustomerCollection ($customer->paginate()->appends ($request->query()));
-    
+
+        return new CustomerCollection($customerQuery->paginate()->appends($request->query()));
     }
 
     /**
@@ -50,11 +48,7 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-        //
-<<<<<<< HEAD
         return new CustomerResource(Customer::create($request->all()));
-=======
->>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
     }
 
     /**
@@ -62,16 +56,13 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-<<<<<<< HEAD
-        $includeInvoices= request()->query('includeInvoice');
-        if ($includeInvoices){
+        $includeInvoices = request()->query('includeInvoices');
+
+        if ($includeInvoices) {
             return new CustomerResource($customer->loadMissing('invoices'));
         }
 
         return new CustomerResource($customer);
-=======
-        //
->>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
     }
 
     /**
@@ -87,11 +78,8 @@ class CustomerController extends Controller
      */
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        //
-<<<<<<< HEAD
         $customer->update($request->all());
-=======
->>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
+        return new CustomerResource($customer);
     }
 
     /**
@@ -99,6 +87,7 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+        return response()->json(['message' => 'Customer deleted successfully'], 200);
     }
 }

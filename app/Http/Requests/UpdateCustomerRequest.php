@@ -3,11 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-<<<<<<< HEAD
 use Illuminate\Validation\Rule;
 
-=======
->>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
 
 class UpdateCustomerRequest extends FormRequest
 {
@@ -16,11 +13,8 @@ class UpdateCustomerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-<<<<<<< HEAD
         return true;
-=======
-        return false;
->>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
+ 
     }
 
     /**
@@ -30,7 +24,6 @@ class UpdateCustomerRequest extends FormRequest
      */
     public function rules(): array
     {
-<<<<<<< HEAD
         $method=$this->method();
 
         if ($method=='PUT'){
@@ -62,10 +55,6 @@ class UpdateCustomerRequest extends FormRequest
                 'postal_code'=>$this->postalCode
             ]);
         }
-=======
-        return [
-            //
-        ];
->>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
+
     }
 }

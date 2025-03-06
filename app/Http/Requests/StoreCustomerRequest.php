@@ -3,11 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-<<<<<<< HEAD
 use Illuminate\Validation\Rule;
-=======
 
->>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
 class StoreCustomerRequest extends FormRequest
 {
     /**
@@ -15,11 +12,7 @@ class StoreCustomerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-<<<<<<< HEAD
         return true;
-=======
-        return false;
->>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
     }
 
     /**
@@ -30,26 +23,20 @@ class StoreCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-<<<<<<< HEAD
-            'name'=>['required'],
-            'type'=>['required',Rule::in(['I','B','i','b'])],
-            'mail'=>['required','email'],
-            'address'=>['required'],
-            'city'=>['required'],
-            'state'=>['required'],
-            'postalCode'=>['required']
+            'name' => ['required'],
+            'type' => ['required', Rule::in(['I', 'B', 'i', 'b'])],
+            'mail' => ['required', 'email'],
+            'address' => ['required'],
+            'city' => ['required'],
+            'state' => ['required'],
+            'postalCode' => ['required'], // Asegúrate de que coincida con el modelo
         ];
     }
 
     protected function prepareForValidation()
     {
         $this->merge([
-            'postal_code'=>$this->postalCode
+            'postal_code' => $this->postalCode, // Manteniendo coherencia con la validación
         ]);
     }
-=======
-            //
-        ];
-    }
->>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
 }

@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    /** @use HasFactory<\Database\Factories\CustomerFactory> */
     use HasFactory;
 
-    protected $fillable=[
-<<<<<<< HEAD
+    protected $fillable = [
         'name',
         'type',
         'mail',
@@ -19,15 +17,11 @@ class Customer extends Model
         'city',
         'state',
         'postal_code'
-        ];
-=======
-
     ];
->>>>>>> 098bc7f83705b979a71eebf2d9d5fd62c493e5d0
 
     /**
-     * Get all of the comments for the Customer
-     * Un cliente puede tener muchas facturas
+     * Get all of the comments for the Customer.
+     * Un cliente puede tener muchas facturas.
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function invoices()
