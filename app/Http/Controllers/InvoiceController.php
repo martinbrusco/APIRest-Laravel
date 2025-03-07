@@ -10,6 +10,8 @@ use App\Http\Requests\UpdateInvoiceRequest;
 use App\Http\Resources\InvoiceCollection;
 use Illuminate\Http\Request;
 use App\Filters\InvoiceFilter;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 
 class InvoiceController extends Controller
 {
@@ -41,11 +43,21 @@ class InvoiceController extends Controller
     /**
      * Bulk store invoices.
      */
-    public function bulkStore(BulkStoreInvoiceRequest $request)
+/* 
+     public function bulkStore(BulkStoreInvoiceRequest $request)
     {
-        // Implementa la lógica para crear múltiples facturas aquí
-    }
+        $bulk = collect($request->all())->map(function ($arr) {
+            return Arr::except($arr, ['customerId', 'billedDate', 'paidDate']); 
+        });
+        
 
+        //Invoice::insert($bulk->toArray());
+        //Invoice::insert($request->all());
+        //Invoice::insert($request->validated());
+        Invoice::insert($request->all());
+        return response()->json(['message' => 'Invoices stored successfully'], 201);
+    }
+ */
     /**
      * Store a newly created resource in storage.
      */
